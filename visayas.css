@@ -44,7 +44,6 @@ nav a:hover {
     transform: scale(1.50);
 }
 
-/* */
 
 .wrapper {
     width: 100%;
@@ -106,22 +105,20 @@ img {
     transform: translateY(0px);
 }
 
-/* */
-
-.luzon-section {
+.visayas-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
     padding: 100px 20px;
     margin: 0px auto;
     width: 80%;
 }
-.luzon-image {
+.visayas-image {
     margin-bottom: 8px;
     width: 300px
 
 }
 
-.luzon-intro {
+.visayas-intro {
     margin-left: 80px;
     margin-right: 80px;
     color: #ffffff;
@@ -135,7 +132,7 @@ img {
     background-color: black;
 }
 
-.luzon-content h1 {
+.visayas-content h1 {
     font-size: 45px;
     color: #ffffff;
     font-family: 'Elephant';
@@ -143,21 +140,21 @@ img {
 }
 
 
-.luzon-content p {
+.visayas-content p {
     font-size: 20px;
     color: #ffffff;
     font-family: 'Times New Roman';
     margin-bottom: 40px;
 }
 
-.luzon-container {
+.visayas-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 50px;
 }
 
-.luzon-recipe {
+.visayas-recipe {
     margin: 40px;
     width: 150px;
 
