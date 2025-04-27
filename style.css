@@ -61,6 +61,12 @@ nav a:hover {
     width: 200px;
 }
 
+.begin-button {
+    margin-top: 40px;
+    width: 150px;
+    
+}
+
 *{
 
     margin: 0;
