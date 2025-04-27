@@ -88,7 +88,7 @@ nav a:hover {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 26ch; }
+    to { width: 24ch; }
 }
 
 .welcome-content p {

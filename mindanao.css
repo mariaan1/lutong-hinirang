@@ -44,7 +44,6 @@ nav a:hover {
     transform: scale(1.50);
 }
 
-
 .wrapper {
     width: 100%;
     display: flex;
@@ -107,6 +106,7 @@ img {
     transform: translateY(0px);
 }
 
+
 .mindanao-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
@@ -115,9 +115,13 @@ img {
     width: 80%;
 }
 .mindanao-image {
-    margin-bottom: 8px;
-    width: 300px
+    margin-bottom: 50px;
+    width: 300px;
+    transition: transform 0.3s;
+}
 
+.mindanao-image:hover {
+    transform: scale(1.25);
 }
 
 .mindanao-intro {
@@ -129,16 +133,33 @@ img {
 }
 
 .popular-recipes {
-    font-size: 80px;
-    margin: 90px;
+    margin-top: 65px;
+    font-family: 'Elephant';
+    font-size: 50px;
+    color: #ffffff;
     background-color: black;
 }
 
-.mindanao-content h1 {
-    font-size: 45px;
-    color: #ffffff;
+.page-label {
     font-family: 'Elephant';
-    margin-bottom: 20px;
+    font-size: 48px;
+    color: #ffffff;
+    border-right: 4px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation:
+        typing 2s steps(9) infinite alternate,
+        blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 9ch; }
 }
 
 

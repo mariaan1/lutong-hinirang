@@ -56,7 +56,7 @@ nav a:hover {
     overflow: hidden;
     width: 0;
     animation:
-        typing 2s steps(12) infinite alternate,
+        typing 2s steps(14) infinite alternate,
         blinkCursor 0.7s step-end infinite;
 }
 
@@ -134,7 +134,7 @@ img {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 12ch; }
+    to { width: 14ch; }
 }
 
 @keyframes blinkCursor {
