@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #843b0c; /* brown color similar to screenshot */
+    background-color: #843b0c;
     display: flex;
     align-items: center;
     justify-content: space-between;
