@@ -1,8 +1,10 @@
-
 body {
     font-family: 'Arial', sans-serif;
     background: url('images/background-pattern.png') repeat;
     background-size: contain;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -33,20 +35,26 @@ nav a {
 
 nav a:hover {
     color: #ffd700;
-
 }
 
 .menu-welcome {
-    font-family: Elephant;
+    font-family: 'Elephant';
     font-size: 48px;
     color: #ffffff;
+    border-right: 4px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation:
+        typing 2s steps(12) infinite alternate,
+        blinkCursor 0.7s step-end infinite;
 }
 
 .welcome-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
     padding: 100px 20px;
-    margin: 0px auto;
+    margin: 0 auto;
     width: 80%;
 }
 
@@ -70,53 +78,55 @@ nav a:hover {
 }
 
 .wrapper {
-    margin:5px;
-    width:280px;
+    margin: 5px;
+    width: 280px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image{
-    width:500px;
+.image {
+    width: 500px;
     position: relative;
 }
 
-img{
-    width:100%;
+img {
+    width: 100%;
     display: block;
-    margin:auto;
+    margin: auto;
 }
 
 .content {
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     position: absolute;
-    background-color:rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     opacity: 0;
     transition: 0.6s;
-
 }
 
 .content:hover {
     opacity: 1;
 }
-.content p{
+
+.content p {
     font-family: 'Times New Roman';
     font-size: 18px;
-    color:#ffffff;
+    color: #ffffff;
     margin: 15px;
 }
 
-*{
+@keyframes typing {
+    from { width: 0; }
+    to { width: 12ch; }
+}
 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
 }
