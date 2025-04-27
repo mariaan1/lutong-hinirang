@@ -17,7 +17,13 @@ header {
 
 .logo img {
     height: 50px;
+    transition: transform 0.3s;
 }
+
+.logo:hover {
+    transform: scale(1.50);
+}
+
 
 nav ul {
     list-style: none;
@@ -27,6 +33,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
+    padding: 9px;
     color: white;
     font-weight: bold;
     font-size: 18px;
@@ -34,7 +41,10 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffd700;
+    color: #ffffff;
+    background-color: #ffbb00;
+    box-shadow: 0 0 15px 5px #ffd000;
+    transform: scale(1.50);
 }
 
 .menu-welcome {
