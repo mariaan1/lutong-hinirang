@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: url('images/background-pattern.png') repeat;
+    background: url('../images/background-pattern.png') repeat;
     background-size: contain;
     margin: 0;
     padding: 0;
