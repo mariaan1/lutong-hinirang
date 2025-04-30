@@ -149,7 +149,7 @@ img {
     overflow: hidden;
     width: 0;
     animation:
-        typing 2s steps(9) infinite alternate,
+        typing 2s steps(13) infinite alternate,
         blinkCursor 0.7s step-end infinite;
 }
 
@@ -159,7 +159,7 @@ img {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 9ch; }
+    to { width: 12.7ch; }
 }
 
 
