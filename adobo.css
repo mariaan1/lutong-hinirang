@@ -1,0 +1,129 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('litratos/background-pattern.png') repeat;
+    background-size: contain;
+}
+
+header {
+    background-color: #843b0c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.50);
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 9px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background-color: #ffbb00;
+    box-shadow: 0 0 15px 5px #ffd000;
+    transform: scale(1.50);
+}
+
+.welcome-section {
+    background: rgba(51, 51, 51, 0.8);
+    text-align: center;
+    padding: 100px 20px;
+    margin: 0px auto;
+    width: 80%;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.welcome-content h1 {
+    font-size: 48px;
+    color: #ffffff;
+    font-family: 'Elephant';
+    margin-bottom: 20px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.mainheader {
+    font-family: 'Elephant';
+    font-size: 48px;
+    color: #ffffff;
+    border-right: 4px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation:
+        typing 2s steps(12) infinite alternate,
+        blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 24ch; }
+}
+
+.welcome-content p {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.center-logo {
+    width: 200px;
+    transition: transform 0.3s;
+}
+
+.center-logo:hover {
+    transform: scale(1.5);
+}
+
+.begin-button {
+    margin-top: 40px;
+    width: 150px;
+    padding: 10px;
+    color: #843b0c;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+    background-color: #843b0c;
+}
+
+.begin-button:hover {
+    box-shadow: 0 0 15px 5px #ffffff;
+    transform: scale(1.50);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
