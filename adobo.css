@@ -112,12 +112,22 @@ nav a:hover {
     margin: 20px;
     padding: 30px;
     width: 450px;
-    height: 800px;
+    height: 580px;
     background-color: #00000033;
     color: #ffffff;
     font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
+}
 
+.nutri-wrapper {
+    display: flex;
+    justify-items: center;
+
+}
+
+.nutri-content {
+    width: 100px;
+    text-align: center;
 }
 
 * {
