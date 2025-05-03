@@ -44,6 +44,8 @@ nav a:hover {
     transform: scale(1.50);
 }
 
+    /* body */
+
 .recipe-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
@@ -54,8 +56,8 @@ nav a:hover {
 
 .recipe-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100%;
 }
@@ -66,7 +68,7 @@ nav a:hover {
 }
 
 .adobo:hover {
-    transform: scale(1.75);
+    transform: scale(1.25);
 }
 
 .mainheader {
@@ -111,23 +113,46 @@ nav a:hover {
     text-align: left;
     margin: 20px;
     padding: 30px;
-    width: 450px;
-    height: 580px;
+    width: 400px;
+    height: 500px;
     background-color: #00000033;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
 }
 
-.nutri-wrapper {
+.nutrition-chart {
+    margin-top: 50px;
     display: flex;
-    justify-items: center;
-
+    justify-content: center;
+    align-items: center;
 }
 
-.nutri-content {
-    width: 100px;
-    text-align: center;
+.nutrition-table {
+    background-color: #000000;
+    width: 400px;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.table-content {
+    line-height: 1.8;
+    border-collapse: collapse;
+}
+
+.table-size {
+width: 1000px;
+background-color: #ffffff;
+font-weight: 900;
+}
+
+.nutrient-1 {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.nutrient-2 {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 * {
