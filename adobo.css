@@ -44,7 +44,7 @@ nav a:hover {
     transform: scale(1.50);
 }
 
-.welcome-section {
+.recipe-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
     padding: 100px 20px;
@@ -52,7 +52,7 @@ nav a:hover {
     width: 80%;
 }
 
-.welcome-content {
+.recipe-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,25 +60,25 @@ nav a:hover {
     height: 100%;
 }
 
-.welcome-content h1 {
-    font-size: 48px;
-    color: #ffffff;
-    font-family: 'Elephant';
-    margin-bottom: 20px;
-    display: inline-block;
-    overflow: hidden;
+.adobo {
+    height: 340px;
+    transition: transform 0.3s;
+}
+
+.adobo:hover {
+    transform: scale(1.75);
 }
 
 .mainheader {
+    margin: 40px;
     font-family: 'Elephant';
-    font-size: 48px;
+    font-size: 50px;
     color: #ffffff;
     border-right: 4px solid #ffffff;
     white-space: nowrap;
     overflow: hidden;
-    width: 0;
     animation:
-        typing 2s steps(12) infinite alternate,
+        typing 2s steps(14) infinite alternate,
         blinkCursor 0.7s step-end infinite;
 }
 
@@ -88,38 +88,36 @@ nav a:hover {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 24ch; }
+    to { width: 14ch; }
 }
 
-.welcome-content p {
+.recipe-description {
+
+    margin-left: 120px;
+    margin-right: 120px;
     font-size: 20px;
+    font-style: italic;
     color: #ffffff;
     margin-bottom: 40px;
 }
 
-.center-logo {
-    width: 200px;
-    transition: transform 0.3s;
+.ingredients-procedure {
+    display: flex;
+    gap: 10px;
 }
 
-.center-logo:hover {
-    transform: scale(1.5);
-}
+.ingredients, .procedure {    
+    line-height: 2;
+    text-align: left;
+    margin: 20px;
+    padding: 30px;
+    width: 450px;
+    height: 800px;
+    background-color: #00000033;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-.begin-button {
-    margin-top: 40px;
-    width: 150px;
-    padding: 10px;
-    color: #843b0c;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s, transform 0.3s;
-    background-color: #843b0c;
-}
-
-.begin-button:hover {
-    box-shadow: 0 0 15px 5px #ffffff;
-    transform: scale(1.50);
 }
 
 * {
