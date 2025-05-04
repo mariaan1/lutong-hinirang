@@ -86,6 +86,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     padding: 50px;
+    flex-wrap: wrap;
 }
 
 .wrapper {
