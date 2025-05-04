@@ -122,6 +122,12 @@ nav a:hover {
     transform: scale(1.50);
 }
 
+.credits {
+    background-color: #843b0c;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 * {
     margin: 0;
     padding: 0;
