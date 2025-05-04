@@ -39,10 +39,9 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffffff;
-    background-color: #ffbb00;
-    box-shadow: 0 0 15px 5px #ffd000;
-    transform: scale(1.50);
+    color: #843b0c;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 5px #ffffff;
 }
 
 .recipe-section {
@@ -105,6 +104,12 @@ nav a:hover {
 .recipe {
     color: #ffffff;
     margin: 8px;
+    transition: transform 0.3s;
+}
+
+.recipe:hover {
+    transform: scale(1.70);
+    background-color: #843b0c;
 }
 
 .nutrition-chart {
@@ -134,12 +139,13 @@ nav a:hover {
 width: 1000px;
 background-color: #ffffff;
 font-weight: 900;
+font-size: 13px;
 }
+
 
 .nutrient-1 {
     background-color: #000000;
     color: #ffffff;
-    transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .nutrient-2 {
@@ -148,7 +154,7 @@ font-weight: 900;
     transition: box-shadow 0.3s, transform 0.3s;
 }
 
-.nutrient-1:hover, .nutrient-2:hover {
+.nutrient-2:hover {
     transform: scale(1.20);
 }
 

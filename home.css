@@ -39,10 +39,9 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffffff;
-    background-color: #ffbb00;
-    box-shadow: 0 0 15px 5px #ffd000;
-    transform: scale(1.50);
+    color: #843b0c;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 5px #ffffff;
 }
 
 .welcome-section {
