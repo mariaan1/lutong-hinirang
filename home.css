@@ -123,7 +123,17 @@ nav a:hover {
 }
 
 .credits {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     background-color: #843b0c;
+
+}
+
+.names {
+    padding: 30px;
+
     color: #ffffff;
     font-family: 'Times New Roman', Times, serif;
 }
