@@ -59,7 +59,7 @@ nav a:hover {
 
 .mainheader {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 2px;
     font-family: 'Elephant';
     font-size: 50px;
     color: #ffffff;
@@ -69,6 +69,12 @@ nav a:hover {
     animation:
         typing 2s steps(14) infinite alternate,
         blinkCursor 0.7s step-end infinite;
+}
+
+.description {
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
 }
 
 @keyframes blinkCursor {
