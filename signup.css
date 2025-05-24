@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: url('litratos/background-pattern.png') repeat;
@@ -18,75 +24,65 @@ header {
 }
 
 .logo:hover {
-    transform: scale(1.50);
+    transform: scale(1.5);
 }
-
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 10px;
     flex-wrap: wrap;
+
 }
 
 nav a {
+    border-right: 2px solid #ffffff4f;
     text-decoration: none;
-    padding: 9px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
     transition: color 0.3s;
+    padding-right: 15px;
+    margin-right: 10px;
 }
+
 
 nav a:hover {
     color: #843b0c;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px 5px #ffffff;
+    background-color: #ffba52;
+    box-shadow: 0 0 15px 5px #ffba52;
+    color: #ffffff;
 }
 
-.wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-
-.portfolio-section {
+.welcome-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
     padding: 100px 20px;
-    margin: 0px auto;
+    margin: 0 auto;
     width: 80%;
 }
 
-.portfolio-intro {
-    margin-left: 80px;
-    margin-right: 80px;
-    color: #ffffff;
-    font-family: 'Times New Roman';
-    margin-bottom: 20px;
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-.div-label {
-    display: flex;
-    justify-content: center;
-} 
-
-.page-label {
-    display: flex;
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 10px;
+.welcome-content h1,
+.mainheader {
     font-family: 'Elephant';
-    font-size: 50px;
+    font-size: 48px;
     color: #ffffff;
+    margin-bottom: 20px;
+    display: inline-block;
+    overflow: hidden;
     border-right: 4px solid #ffffff;
     white-space: nowrap;
-    overflow: hidden;
-    width: 0;
     animation:
-        typing 2s steps(13) infinite alternate,
+        typing 1s steps(8) infinite alternate,
         blinkCursor 0.7s step-end infinite;
 }
 
@@ -96,74 +92,45 @@ nav a:hover {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 13ch; }
+    to { width: 8ch; }
 }
 
-
-.portfolio-content p {
+.welcome-content p {
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Times New Roman';
     margin-bottom: 40px;
 }
 
-.islands-portfolio {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.a-order {
-    margin-top: 50px;
-    font-family: 'Elephant';
-    color: #ffffff;
-    font-size: 35px;
-}
-
-.recipe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 50px;
-    background-color: rgba(0, 0, 0, 0.568);
-    flex-wrap: wrap;
-    transition: transform 0.3s;
-}
-
-
-.recipe:hover {
-    transform: scale(1.3);
-}
-
-.recipe-name-island {
-    width: 100px;
- color: #ffffff;
- font-family: 'Times New Roman', Times, serif;
-}
-
-.recipe-image {
-    margin: 10px;
-    width: 100px;
-}
-
-
-*{
-
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@keyframes scroll {
-    from{
-        opacity: 0;
-        scale: 0.5;
+input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
     }
-to{
-    opacity: 1;
-    scale:1;
+    button {
+      padding: 10px 20px;
     }
+
+.signup-box {
+    background-color: #ffffff;
+    width: 500px;
+    justify-items: center;   
+    border-radius: 20px;
+    border:3px solid #0000002d;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+}
+
+.center-signup {
+    margin: 50px;
+    width: 200px;
+    color: black;
+}
+
+.center-signup p {
+    margin-top: 20px;
+    color: black;
+    font-weight: 300;
 }
 
 
@@ -181,6 +148,7 @@ to{
     font-family: 'Times New Roman', Times, serif;
 }
 
+
 .menu-button {
     display: none;
     cursor: pointer;
@@ -191,6 +159,7 @@ to{
     height: 30px;
 }
 
+/* Mobile */
 @media (max-width: 1115px) {
     .menu-button {
         display: block;
@@ -201,9 +170,23 @@ to{
         transform: scale(1.5);
 }
 
+    .welcome-section {
+        width: 90%;
+    }
+
+    .welcome-content h1 {
+        font-size: 50px;
+        padding-bottom: 30px;
+    }
+
+    .welcome-content p {
+        font-size: 15px;
+    }
+
     #navbar-links {
         display: none;
         position: absolute;
+        top: 70px;
         right: 0;
         background-color: #9e4d1f;
         width: 100%;
@@ -224,21 +207,35 @@ to{
     }
 
     nav a {
-    border-right: 2px solid #9e4d1f;
-    gap: 9px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    transition: color 0.3s;
-    }
-    .portfolio-intro {
-        padding: 0%;
-        margin: 0%;
+        border-right: 2px solid #9e4d1f;
+        gap: 9px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+        transition: color 0.3s;
     }
 
-    .div-label h1 {
-        font-size: 30px;
+    .signup-box {
+        background-color: #ffffff;
+        width: 250px;
+        justify-items: center;   
+        border-radius: 20px;
+        border:3px solid #0000002d;
+        font-weight: 700;
+        color: black;
+        text-align: center;
     }
 
+    .center-signup {
+        margin: 50px;
+        width: 200px;
+        color: black;
+    }
+
+    .center-signup p {
+        margin-top: 20px;
+        color: black;
+        font-weight: 300;
+    }
 }

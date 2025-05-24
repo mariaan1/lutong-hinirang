@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    #loginForm {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    #loginForm label {
+      display: block;
+      margin-top: 10px;
+    }
+    #loginForm input, #loginForm button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    button {
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #navBar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #navBar button {
+      padding: 10px 20px;
+      border-radius: 6px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #navBar button:hover {
+      background-color: #1e7e34;
+    }
+    #adminControls {
+      text-align: center;
+      margin-top: 10px;
+    }
+    #adminControls button {
+      background-color: #dc3545;
+      padding: 10px 20px;
+    }
+    #adminControls button:hover {
+      background-color: #c82333;
+    }
+    #userPassList, #recipesList {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+    .recipe {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+    .recipe img {
+      max-width: 150px;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    /* Modal styles */
+    #editModal {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 90%;
+      z-index: 1000;
+    }
+    #modalOverlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 900;
+    }
+    #editModal input[type="text"],
+    #editModal textarea,
+    #editModal input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    #editModal button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    #editModal button:nth-child(1) {
+      background-color: #007BFF;
+      color: white;
+    }
+    #editModal button:nth-child(2) {
+      background-color: #ccc;
+      color: black;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+
+  <div id="loginForm">
+    <label for="adminUser">Username:</label>
+    <input type="text" id="adminUser" autocomplete="off" autocapitalize="none" placeholder="Enter admin username" />
+    <label for="adminPass">Password:</label>
+    <input type="password" id="adminPass" placeholder="Enter admin password" />
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+  <div id="navBar" class="hidden">
+    <button onclick="location.href='login.html'">Login</button>
+    <button onclick="location.href='signup.html'">Sign Up</button>
+    <button onclick="location.href='public.html'">Public Recipes</button>
+  </div>
+
+  <div id="adminControls" class="hidden">
+    <button onclick="logoutAdmin()">Logout Admin</button>
+  </div>
+
+  <div id="userPassList" class="hidden">
+    <h2>Registered Users</h2>
+    <pre id="usersDisplay"></pre>
+  </div>
+
+  <div id="recipesList" class="hidden">
+    <h2>All User Recipes</h2>
+    <div id="recipesContainer"></div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="hidden">
+    <h3>Edit Recipe</h3>
+    <label>Title:</label>
+    <input type="text" id="editTitle" />
+    
+    <label>Ingredients / Content (use new lines for list items):</label>
+    <textarea id="editContent" rows="6"></textarea>
+    
+    <label>Upload Image:</label>
+    <input type="file" id="editImage" accept="image/*" />
+    
+    <div style="margin-top: 15px; text-align: right;">
+      <button onclick="saveEdit()">Save</button>
+      <button onclick="closeEditModal()" style="background-color: #ccc; color: black; margin-left: 10px;">Cancel</button>
+    </div>
+  </div>
+  <div id="modalOverlay" class="hidden"></div>
+
+<script>
+  const adminCreds = { username: 'admin', password: 'admin123' };
+
+  function adminLogin() {
+    const user = document.getElementById('adminUser').value.trim().toLowerCase();
+    const pass = document.getElementById('adminPass').value;
+
+    if (user === adminCreds.username && pass === adminCreds.password) {
+      alert('Admin logged in!');
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('navBar').classList.remove('hidden');
+      document.getElementById('adminControls').classList.remove('hidden');
+      document.getElementById('userPassList').classList.remove('hidden');
+      document.getElementById('recipesList').classList.remove('hidden');
+      displayUsers();
+      displayRecipes();
+    } else {
+      alert('Invalid admin credentials');
+    }
+  }
+
+  function logoutAdmin() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('navBar').classList.add('hidden');
+    document.getElementById('adminControls').classList.add('hidden');
+    document.getElementById('userPassList').classList.add('hidden');
+    document.getElementById('recipesList').classList.add('hidden');
+    document.getElementById('adminUser').value = '';
+    document.getElementById('adminPass').value = '';
+  }
+
+  function displayUsers() {
+    const users = JSON.parse(localStorage.getItem('users') || '{}');
+    let text = '';
+    for (const username in users) {
+      text += `${username} : ${users[username]}\n`;
+    }
+    document.getElementById('usersDisplay').textContent = text || 'No users registered yet.';
+  }
+
+  function displayRecipes() {
+    const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
+    const container = document.getElementById('recipesContainer');
+    container.innerHTML = '';
+
+    for (const user in recipes) {
+      recipes[user].forEach((r, i) => {
+        const div = document.createElement('div');
+        div.className = 'recipe';
+        const contentList = r.content.split('\n').map(line => `<li>${line}</li>`).join('');
+        div.innerHTML = `
+          <em>By: ${user}</em><br>
+          <strong>${r.title}</strong>
+          <ul>${contentList}</ul>
+          ${r.image ? `<img src="${r.image}" alt="Recipe Image">` : ''}
+          <button onclick="editRecipe('${user}', ${i})">Edit</button>
+          <button onclick="deleteRecipe('${user}', ${i})">Delete</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+  }
+
+  let editUser = null, editIndex = null;
+
+  function editRecipe(u, i) {
+    editUser = u;
+    editIndex = i;
+    
+    const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
+    const r = recipes[u][i];
+    
+    document.getElementById('editTitle').value = r.title;
+    document.getElementById('editContent').value = r.content;
+    document.getElementById('editImage').value = ''; // reset file input
+    
+    document.getElementById('editModal').classList.remove('hidden');
+    document.getElementById('modalOverlay').classList.remove('hidden');
+  }
+
+  function closeEditModal() {
+    document.getElementById('editModal').classList.add('hidden');
+    document.getElementById('modalOverlay').classList.add('hidden');
+  }
+
+  function saveEdit() {
+    const newTitle = document.getElementById('editTitle').value.trim();
+    const newContent = document.getElementById('editContent').value.trim();
+    const imageInput = document.getElementById('editImage');
+    const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
+    let recipe = recipes[editUser][editIndex];
+    
+    if (!newTitle) {
+      alert('Title cannot be empty');
+      return;
+    }
+
+    recipe.title = newTitle;
+    recipe.content = newContent;
+
+    if (imageInput.files && imageInput.files[0]) {
+      const file = imageInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        recipe.image = e.target.result; // base64 image string
+        
+        recipes[editUser][editIndex] = recipe;
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        displayRecipes();
+        closeEditModal();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // No new image, keep existing
+      recipes[editUser][editIndex] = recipe;
+      localStorage.setItem('recipes', JSON.stringify(recipes));
+      displayRecipes();
+      closeEditModal();
+    }
+  }
+
+  function deleteRecipe(u, i) {
+    if (confirm('Delete this recipe?')) {
+      const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
+      recipes[u].splice(i, 1);
+      if (recipes[u].length === 0) delete recipes[u];
+      localStorage.setItem('recipes', JSON.stringify(recipes));
+      displayRecipes();
+    }
+  }
+</script>
+</body>
+</html>

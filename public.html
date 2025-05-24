@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Recipes</title>
+      <link href="public.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+        <div class="logo">
+            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
+        </div>            
+        <nav>
+            <div class="menu-button" id="menu-button">
+                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+            </div>
+            <ul id="navbar-links">
+                <li><a onclick="window.location.href='public.html'">Dashboard</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="luzon.html">Luzon</a></li>
+                <li><a href="visayas.html">Visayas</a></li>
+                <li><a href="mindanao.html">Mindanao</a></li>
+                <li><a href="portfolio.html">Portfolio Content</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+                <li><a onclick="logout()">Logout</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="welcome-section">
+    <div class="welcome-content">
+  <div class="top-bar">
+    <h1>Dashboard</h2>
+    <p>See all posted recipes by other users.</p> <br>
+  </div>    
+  
+    <div> 
+        <div id="authButtons"></div>
+        <button onclick="window.location.href='profile.html'" class="profile-button">Back to Profile</button> 
+    </div>
+<br>    
+    <div class="timeline">
+
+        <div id="recipesContainer"></div>
+
+        <div id="editModal">
+            <div>
+            <h3>Edit Recipe</h3>
+            <input type="text" id="editTitle"><br>
+            <textarea id="editContent"></textarea><br>
+            <input type="file" id="editImage"><br>
+            <button onclick="saveEdit()">Save</button>
+            <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+ document.getElementById('menu-button').addEventListener('click', function () {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menuButton = document.getElementById('menu-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+
+
+  const user = localStorage.getItem('loggedInUser');
+  const auth = document.getElementById('authButtons');
+  if (user) auth.innerHTML = `Welcome, <strong>${user}</strong>`;
+  else auth.innerHTML = `<em>You are not logged in.</em> <button onclick="window.location.href='login.html'">Login</button>`;
+
+  function logout() {
+    localStorage.removeItem('loggedInUser');
+    location.reload();
+  }
+
+  const recipes = JSON.parse(localStorage.getItem('recipes')) || {};
+  const container = document.getElementById('recipesContainer');
+
+  function display() {
+    container.innerHTML = '';
+    for (const u in recipes) {
+      recipes[u].forEach((r, i) => {
+        const d = document.createElement('div');
+        d.className = 'recipe';
+        const list = r.content.split('\n').map(l => `<li>${l}</li>`).join('');
+        d.innerHTML = `<em>posted by:<strong> ${u}</strong><br></em><br><strong>${r.title}</strong><ul><br>${list}</ul><br>`;
+        if (r.image) d.innerHTML += `<img src="${r.image}"><br>`;
+        if (user === u) {
+          d.innerHTML += `<br><button onclick="editRecipe('${u}', ${i})">Edit</button>
+                          <button onclick="deleteRecipe('${u}', ${i})">Delete</button>`;
+        }
+        container.appendChild(d);
+      });
+    }
+  }
+
+  let editUser = null, editIndex = null;
+  function editRecipe(u, i) {
+    editUser = u; editIndex = i;
+    const r = recipes[u][i];
+    document.getElementById('editTitle').value = r.title;
+    document.getElementById('editContent').value = r.content;
+    document.getElementById('editImage').value = '';
+    document.getElementById('editModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('editModal').classList.remove('active');
+  }
+
+  function saveEdit() {
+    const t = document.getElementById('editTitle').value;
+    const c = document.getElementById('editContent').value;
+    const f = document.getElementById('editImage').files[0];
+    const r = recipes[editUser][editIndex];
+    r.title = t;
+    r.content = c;
+
+    const finish = (img = null) => {
+      if (img) r.image = img;
+      localStorage.setItem('recipes', JSON.stringify(recipes));
+      closeModal();
+      display();
+    };
+
+    if (f) {
+      const reader = new FileReader();
+      reader.onloadend = () => finish(reader.result);
+      reader.readAsDataURL(f);
+    } else {
+      finish();
+    }
+  }
+
+  function deleteRecipe(u, i) {
+    if (confirm('Delete this recipe?')) {
+      recipes[u].splice(i, 1);
+      localStorage.setItem('recipes', JSON.stringify(recipes));
+      display();
+    }
+  }
+
+  display();
+</script>
+</body>
+<footer style="margin-top: 40px; padding: 20px; text-align: center; border-top: 1px solid #ccc;">
+  <button onclick="location.href='admin.html'" style="padding: 10px 20px;">Go to Admin Panel</button>
+</footer>
+</html>

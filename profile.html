@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link href="profile.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+        <div class="logo">
+            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
+        </div>            
+        <nav>
+            <div class="menu-button" id="menu-button">
+                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+            </div>
+            <ul id="navbar-links">
+                <li><a onclick="window.location.href='public.html'">Dashboard</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="luzon.html">Luzon</a></li>
+                <li><a href="visayas.html">Visayas</a></li>
+                <li><a href="mindanao.html">Mindanao</a></li>
+                <li><a href="portfolio.html">Portfolio Content</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+                <li><a onclick="logout()">Logout</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<div class="welcome-section">
+<div class="welcome-content">
+                <div class="top-bar">
+                    <h1>Your Recipes</h1>
+                    
+                </div>
+
+                <h3>Welcome, <span id="usernameDisplay"></span></h3>
+        <div class="create-recipe-box">
+                <input type="text" id="recipeTitle" placeholder="Recipe Title">
+                <textarea id="recipeContent" placeholder="Enter ingredients, one per line"></textarea>
+                <input type="file" id="recipeImage" accept="image/*">
+                <button onclick="addRecipe()">Post Recipe</button>
+        </div>
+        <div class="posts">Posts</div>
+        <div class="your-recipes">
+                <div id="yourRecipes"></div>
+                <div id="editModal">
+                    <div>
+                    <h3>Edit Recipe</h3>
+                    <input type="text" id="editTitle"><br>
+                    <textarea id="editContent"></textarea><br>
+                    <input type="file" id="editImage" accept="image/*"><br>
+                    <button onclick="saveEdit()">Save</button>
+                    <button onclick="closeModal()">Cancel</button>
+                    </div>
+                </div>
+        </div>        
+</div>
+</div>
+
+    <div class="credits">
+        <div class="names">
+            <div>
+                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+            </div>
+            <div>
+                <h3>BSCPE 402</h3>
+            </div>
+        </div>
+    </div>
+<script>
+    
+
+ document.getElementById('menu-button').addEventListener('click', function () {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menuButton = document.getElementById('menu-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+
+
+  const user = localStorage.getItem('loggedInUser');
+  if (!user) window.location.href = 'login.html';
+  document.getElementById('usernameDisplay').textContent = user;
+
+  function logout() {
+    localStorage.removeItem('loggedInUser');
+    location.href = 'login.html';
+  }
+
+  function addRecipe() {
+    const title = document.getElementById('recipeTitle').value.trim();
+    const content = document.getElementById('recipeContent').value.trim();
+    const imageFile = document.getElementById('recipeImage').files[0];
+    if (!title || !content) return alert("Enter title and ingredients.");
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const all = JSON.parse(localStorage.getItem('recipes') || '{}');
+      const list = all[user] || [];
+      list.push({ title, content, image: reader.result });
+      all[user] = list;
+      localStorage.setItem('recipes', JSON.stringify(all));
+      displayRecipes();
+      clearInputs();
+    };
+    if (imageFile) reader.readAsDataURL(imageFile);
+    else reader.onloadend();
+  }
+
+  function clearInputs() {
+    document.getElementById('recipeTitle').value = '';
+    document.getElementById('recipeContent').value = '';
+    document.getElementById('recipeImage').value = '';
+  }
+
+  function displayRecipes() {
+    const container = document.getElementById('yourRecipes');
+    container.innerHTML = '';
+    const recipes = (JSON.parse(localStorage.getItem('recipes')) || {})[user] || [];
+    recipes.forEach((r, i) => {
+      const div = document.createElement('div');
+      div.className = 'recipe';
+      const list = r.content.split('\n').map(l => `<li>${l}</li>`).join('');
+      div.innerHTML = `<strong>${r.title}</strong><ul>${list}</ul>`;
+      if (r.image) div.innerHTML += `<img src="${r.image}"><br>`;
+      div.innerHTML += `<button onclick="editRecipe(${i})">Edit</button>
+                        <button onclick="deleteRecipe(${i})">Delete</button>`;
+      container.appendChild(div);
+    });
+  }
+
+  function deleteRecipe(i) {
+    if (!confirm('Delete this recipe?')) return;
+    const all = JSON.parse(localStorage.getItem('recipes'));
+    all[user].splice(i, 1);
+    localStorage.setItem('recipes', JSON.stringify(all));
+    displayRecipes();
+  }
+
+  let editIndex = null;
+  function editRecipe(i) {
+    const recipes = (JSON.parse(localStorage.getItem('recipes')) || {})[user] || [];
+    const r = recipes[i];
+    editIndex = i;
+    document.getElementById('editTitle').value = r.title;
+    document.getElementById('editContent').value = r.content;
+    document.getElementById('editImage').value = '';
+    document.getElementById('editModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('editModal').classList.remove('active');
+  }
+
+  function saveEdit() {
+    const title = document.getElementById('editTitle').value.trim();
+    const content = document.getElementById('editContent').value.trim();
+    const file = document.getElementById('editImage').files[0];
+    const all = JSON.parse(localStorage.getItem('recipes'));
+    const r = all[user][editIndex];
+    r.title = title;
+    r.content = content;
+
+    const saveAndDisplay = (img = null) => {
+      if (img) r.image = img;
+      all[user][editIndex] = r;
+      localStorage.setItem('recipes', JSON.stringify(all));
+      closeModal();
+      displayRecipes();
+    };
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => saveAndDisplay(reader.result);
+      reader.readAsDataURL(file);
+    } else {
+      saveAndDisplay();
+    }
+  }
+
+  displayRecipes();
+</script>
+</body>
+</html>
