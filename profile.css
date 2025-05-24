@@ -270,7 +270,7 @@ nav a:hover {
         display: flex;
         flex-direction: column;
         background-color: #ffffff;
-        height: 400px;
+        height: auto;
         width: 300px;
         text-align: left;
         align-items: center;

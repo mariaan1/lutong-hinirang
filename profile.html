@@ -112,6 +112,100 @@
       navbarLinks.classList.remove('active');
     }
   });
+
+
+  function addRecipe() {
+    const title = document.getElementById('recipeTitle').value.trim();
+    const content = document.getElementById('recipeContent').value.trim();
+    const imageFile = document.getElementById('recipeImage').files[0];
+    if (!title || !content) return alert("Enter title and ingredients.");
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const all = JSON.parse(localStorage.getItem('recipes') || '{}');
+      const list = all[user] || [];
+      list.push({ title, content, image: reader.result });
+      all[user] = list;
+      localStorage.setItem('recipes', JSON.stringify(all));
+      displayRecipes();
+      clearInputs();
+    };
+    if (imageFile) reader.readAsDataURL(imageFile);
+    else reader.onloadend();
+  }
+
+  function clearInputs() {
+    document.getElementById('recipeTitle').value = '';
+    document.getElementById('recipeContent').value = '';
+    document.getElementById('recipeImage').value = '';
+  }
+
+  function displayRecipes() {
+    const container = document.getElementById('yourRecipes');
+    container.innerHTML = '';
+    const recipes = (JSON.parse(localStorage.getItem('recipes')) || {})[user] || [];
+    recipes.forEach((r, i) => {
+      const div = document.createElement('div');
+      div.className = 'recipe';
+      const list = r.content.split('\n').map(l => `<li>${l}</li>`).join('');
+      div.innerHTML = `<strong>${r.title}</strong><ul>${list}</ul>`;
+      if (r.image) div.innerHTML += `<img src="${r.image}"><br>`;
+      div.innerHTML += `<button onclick="editRecipe(${i})">Edit</button>
+                        <button onclick="deleteRecipe(${i})">Delete</button>`;
+      container.appendChild(div);
+    });
+  }
+
+  function deleteRecipe(i) {
+    if (!confirm('Delete this recipe?')) return;
+    const all = JSON.parse(localStorage.getItem('recipes'));
+    all[user].splice(i, 1);
+    localStorage.setItem('recipes', JSON.stringify(all));
+    displayRecipes();
+  }
+
+  let editIndex = null;
+  function editRecipe(i) {
+    const recipes = (JSON.parse(localStorage.getItem('recipes')) || {})[user] || [];
+    const r = recipes[i];
+    editIndex = i;
+    document.getElementById('editTitle').value = r.title;
+    document.getElementById('editContent').value = r.content;
+    document.getElementById('editImage').value = '';
+    document.getElementById('editModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('editModal').classList.remove('active');
+  }
+
+  function saveEdit() {
+    const title = document.getElementById('editTitle').value.trim();
+    const content = document.getElementById('editContent').value.trim();
+    const file = document.getElementById('editImage').files[0];
+    const all = JSON.parse(localStorage.getItem('recipes'));
+    const r = all[user][editIndex];
+    r.title = title;
+    r.content = content;
+
+    const saveAndDisplay = (img = null) => {
+      if (img) r.image = img;
+      all[user][editIndex] = r;
+      localStorage.setItem('recipes', JSON.stringify(all));
+      closeModal();
+      displayRecipes();
+    };
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => saveAndDisplay(reader.result);
+      reader.readAsDataURL(file);
+    } else {
+      saveAndDisplay();
+    }
+  }
+
+  displayRecipes();
 </script>
 </body>
 </html>
