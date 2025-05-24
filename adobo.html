@@ -1,139 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adobo</title>
-    <link href="first-recipe.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adobo</title>
+  <link href="first-recipe.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
-        </div>            
-        <nav>
-            <div class="menu-button" id="menu-button">
-                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
-            </div>
-            <ul id="navbar-links">
-                <li><a href="public.html">Dashboard</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="luzon.html">Luzon</a></li>
-                <li><a href="visayas.html">Visayas</a></li>
-                <li><a href="mindanao.html">Mindanao</a></li>
-                <li><a href="portfolio.html">Portfolio Content</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>     
+<header>
+  <div class="logo">
+    <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo" /></a>
+  </div>            
+  <nav>
+    <div class="menu-button" id="menu-button">
+      <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+    </div>
+    <ul id="navbar-links">
+      <li><a href="public.html">Dashboard</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="luzon.html">Luzon</a></li>
+      <li><a href="visayas.html">Visayas</a></li>
+      <li><a href="mindanao.html">Mindanao</a></li>
+      <li><a href="portfolio.html">Portfolio Content</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+      <li id="signupItem"><a href="signup.html">Sign Up</a></li>
+      <li id="loginItem"><a href="login.html">Login</a></li>
+      <li id="logoutItem"><a href="#" onclick="logout()">Logout</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+</header>     
 
 <section>
-    <div class="recipe-section">
-        <div>
-        <div class="recipe-content">
-                <div><img src="recipes/adobo.PNG" class="adobo"><br>
-                <p class="mainheader">Adobong Manok</p>
-                </div>
-                <div><p class="recipe-description">Adobo is considered the unofficial national dish of the Philippines. It was a marinating and cooking meat with vinegar and salt that was later influenced by Spanish colonization, introducing soy sauce and other spices.</p>
-                </div>
-                <div class="ingredients-procedure">
-                <div class="ingredients">
-                    <h3>Ingredients:</h3><br>
-                        1 kg chicken or pork<br>
-                        12 cup soy sauce<br>
-                        13 cup vinegar<br>
-                        1 head garlic (crushed)<br>
-                        2 bay leaves<br>
-                        1 tsp whole peppercorns<br>
-                        1 tbsp sugar (optional)<br>
-                        1-2 cup water<br>
-                        Cooking oil<br>
-                </div>
-                <div class="procedure">
-                <h3>Procedure:</h3>
-                <br>
-                
-                        1. Marinate meat in soy sauce, garlic, and peppercorns for at least 30 minutes<br>
-                        2. Sauté garlic until fragrant, add marinated meat and cook until lightly browned<br>
-                        3. Add vinegar, bay leaves, sugar, and water<br>
-                        4. Let it boil without stirring<br>
-                        5. Simmer for 30 to 40 minutes until meat is tender and sauce is reduced<br>
-                </div>
-            </div>
-        </div> 
-        </div>
-    <div class="nutrition-chart">
-        <div class="nutrition-table">
-            <table class="table-content">
-                    <tr>
-                        <th class="table-size">Nutrition Facts</th>
-                        <th class="table-size">per 1 cup serving</th>
-                    </tr>
-                    <tr class="nutrient-1">
-                        <td>Nutrients:</td>
-                        <td></td>
-                    </tr>
-                    <tr class="nutrient-2">
-                        <td>Calories</td>
-                        <td>320 kcal</td>
-                    </tr>
-                    <tr class="nutrient-2">
-                        <td>Protein</td>
-                        <td>25g</td>
-                    </tr>
-                    <tr class="nutrient-2">
-                        <td>Fat</td>
-                        <td>20g</td>
-                    </tr>
-                    <tr class="nutrient-2">
-                        <td>Carbs</td>
-                        <td>5g</td>
-                    </tr>
-                    <tr class="nutrient-2">
-                        <td>Sodium</td>
-                        <td>850mg</td>
-                    </tr>
-            </table>
-        </div>   
-    </div>
-    <div class="back-button">
-        <a href="luzon.html">
-        <img src="litratos/back-to-recipe.png" class="back-to-recipe"></a>
-        <a href="sinigang.html"><img src="litratos/next-recipe.png" class="back-to-recipe"></a>
-    </div>>  
-</div>
+  <div class="recipe-section">
+    <div class="recipe-content">
 
+      <div id="welcomeMessage" style="display: none; text-align: center; margin: 50px 0; font-style: italic; color: #ffffff; font-family: 'Times New Roman', Times, serif; font-size: 35px;">
+        <h3><span style="font-weight: normal;">Welcome, </span><span id="usernameDisplay" style="font-weight: bold;"></span></h3>
+      </div>
+
+      <div>
+        <img src="recipes/adobo.PNG" class="adobo" /><br />
+        <p class="mainheader">Adobong Manok</p>
+      </div>
+      <div>
+        <p class="recipe-description">
+          Adobo is considered the unofficial national dish of the Philippines. It was a marinating and cooking meat with vinegar and salt that was later influenced by Spanish colonization, introducing soy sauce and other spices.
+        </p>
+      </div>
+      <div class="ingredients-procedure">
+        <div class="ingredients">
+          <h3>Ingredients:</h3><br/>
+          1 kg chicken or pork<br/>
+          1/2 cup soy sauce<br/>
+          1/3 cup vinegar<br/>
+          1 head garlic (crushed)<br/>
+          2 bay leaves<br/>
+          1 tsp whole peppercorns<br/>
+          1 tbsp sugar (optional)<br/>
+          1-2 cup water<br/>
+          Cooking oil<br/>
+        </div>
+        <div class="procedure">
+          <h3>Procedure:</h3><br/>
+          1. Marinate meat in soy sauce, garlic, and peppercorns for at least 30 minutes<br/>
+          2. Sauté garlic until fragrant, add marinated meat and cook until lightly browned<br/>
+          3. Add vinegar, bay leaves, sugar, and water<br/>
+          4. Let it boil without stirring<br/>
+          5. Simmer for 30 to 40 minutes until meat is tender and sauce is reduced<br/>
+        </div>
+      </div>
+    </div> 
+
+    <div class="nutrition-chart">
+      <div class="nutrition-table">
+        <table class="table-content">
+          <tr>
+            <th class="table-size">Nutrition Facts</th>
+            <th class="table-size">per 1 cup serving</th>
+          </tr>
+          <tr class="nutrient-1">
+            <td>Nutrients:</td><td></td>
+          </tr>
+          <tr class="nutrient-2"><td>Calories</td><td>320 kcal</td></tr>
+          <tr class="nutrient-2"><td>Protein</td><td>25g</td></tr>
+          <tr class="nutrient-2"><td>Fat</td><td>20g</td></tr>
+          <tr class="nutrient-2"><td>Carbs</td><td>5g</td></tr>
+          <tr class="nutrient-2"><td>Sodium</td><td>850mg</td></tr>
+        </table>
+      </div>   
+    </div>
+
+    <div class="back-button">
+      <a href="luzon.html"><img src="litratos/back-to-recipe.png" class="back-to-recipe" /></a>
+      <a href="sinigang.html"><img src="litratos/next-recipe.png" class="back-to-recipe" /></a>
+    </div>
+  </div>
 </section>
 
 <div class="credits">
-        <div class="names">
-            <div>
-                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
-            </div>
-            <div>
-                <h3>BSCPE 402</h3>
-            </div>
-        </div>
+  <div class="names">
+    <div>
+      <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
     </div>
+    <div>
+      <h3>BSCPE 402</h3>
+    </div>
+  </div>
+</div>
 
 <script>
-        document.getElementById('menu-button').addEventListener('click', function () {
-            document.getElementById('navbar-links').classList.toggle('active');
-        });
+  const user = localStorage.getItem('loggedInUser');
 
-        document.addEventListener('click', function (event) {
-            const menuButton = document.getElementById('menu-button');
-            const navbarLinks = document.getElementById('navbar-links');
+  const loginItem = document.getElementById('loginItem');
+  const signupItem = document.getElementById('signupItem');
+  const logoutItem = document.getElementById('logoutItem');
+  const welcomeMessage = document.getElementById('welcomeMessage');
 
-            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
-                navbarLinks.classList.remove('active');
-            }
-        });
-    </script>
+  if (!user) {
+    loginItem.style.display = 'list-item';
+    signupItem.style.display = 'list-item';
+    logoutItem.style.display = 'none';
+    welcomeMessage.style.display = 'none';
+  } else {
+    document.getElementById('usernameDisplay').textContent = user;
+    loginItem.style.display = 'none';
+    signupItem.style.display = 'none';
+    logoutItem.style.display = 'list-item';
+    welcomeMessage.style.display = 'block';
+  }
 
+  function logout() {
+    localStorage.removeItem('loggedInUser');
+    location.href = 'login.html';
+  }
+
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('navbar-links').classList.toggle('active');
+  });
+
+  document.addEventListener('click', function (event) {
+    const menuButton = document.getElementById('menu-button');
+    const navbarLinks = document.getElementById('navbar-links');
+
+    if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+      navbarLinks.classList.remove('active');
+    }
+  });
+</script>
 </body>
 </html>

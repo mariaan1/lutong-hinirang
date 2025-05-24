@@ -24,14 +24,19 @@
                 <li><a href="portfolio.html">Portfolio Content</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
+      <li id="signupItem"><a href="signup.html">Sign Up</a></li>
+      <li id="loginItem"><a href="login.html">Login</a></li>
+      <li id="logoutItem"><a href="#" onclick="logout()">Logout</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+</header>     
 
 <section class="gallery-section">
+    <div class="gallery-content">      
+        <div id="welcomeMessage" style="display: none; text-align: center; margin: 50px 0; font-style: italic; color: #ffffff; font-family: 'Times New Roman', Times, serif; font-size: 35px;">
+        <h3><span style="font-weight: normal;">Welcome, </span><span id="usernameDisplay" style="font-weight: bold;"></span></h3>
+      </div>
         <div class="gallery-intro">
             <div class="page-label">
                 <h1>Gallery</h1>
@@ -109,20 +114,46 @@
         </div>
     </div>
 
+
 <script>
-        document.getElementById('menu-button').addEventListener('click', function () {
-            document.getElementById('navbar-links').classList.toggle('active');
-        });
+  const user = localStorage.getItem('loggedInUser');
 
-        document.addEventListener('click', function (event) {
-            const menuButton = document.getElementById('menu-button');
-            const navbarLinks = document.getElementById('navbar-links');
+  const loginItem = document.getElementById('loginItem');
+  const signupItem = document.getElementById('signupItem');
+  const logoutItem = document.getElementById('logoutItem');
+  const welcomeMessage = document.getElementById('welcomeMessage');
 
-            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
-                navbarLinks.classList.remove('active');
-            }
-        });
-    </script>
+  if (!user) {
+    loginItem.style.display = 'list-item';
+    signupItem.style.display = 'list-item';
+    logoutItem.style.display = 'none';
+    welcomeMessage.style.display = 'none';
+  } else {
+    document.getElementById('usernameDisplay').textContent = user;
+    loginItem.style.display = 'none';
+    signupItem.style.display = 'none';
+    logoutItem.style.display = 'list-item';
+    welcomeMessage.style.display = 'block';
+  }
+
+  function logout() {
+    localStorage.removeItem('loggedInUser');
+    location.href = 'login.html';
+  }
+
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('navbar-links').classList.toggle('active');
+  });
+
+  document.addEventListener('click', function (event) {
+    const menuButton = document.getElementById('menu-button');
+    const navbarLinks = document.getElementById('navbar-links');
+
+    if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+      navbarLinks.classList.remove('active');
+    }
+  });
+</script>
 
 </body>
 </html>

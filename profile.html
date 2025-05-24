@@ -6,90 +6,101 @@
 </head>
 <body>
 <header>
-        <div class="logo">
-            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
-        </div>            
-        <nav>
-            <div class="menu-button" id="menu-button">
-                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
-            </div>
-            <ul id="navbar-links">
-                <li><a onclick="window.location.href='public.html'">Dashboard</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="luzon.html">Luzon</a></li>
-                <li><a href="visayas.html">Visayas</a></li>
-                <li><a href="mindanao.html">Mindanao</a></li>
-                <li><a href="portfolio.html">Portfolio Content</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
-                <li><a onclick="logout()">Logout</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
-
+  <div class="logo">
+    <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
+  </div>
+  <nav>
+    <div class="menu-button" id="menu-button">
+      <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+    </div>
+    <ul id="navbar-links">
+      <li><a href="public.html">Dashboard</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="luzon.html">Luzon</a></li>
+      <li><a href="visayas.html">Visayas</a></li>
+      <li><a href="mindanao.html">Mindanao</a></li>
+      <li><a href="portfolio.html">Portfolio Content</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+      <li id="loginItem"><a href="login.html">Login</a></li>
+      <li id="logoutItem"><a href="#" onclick="logout()">Logout</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+</header>
 
 <div class="welcome-section">
-<div class="welcome-content">
-                <div class="top-bar">
-                    <h1>Your Recipes</h1>
-                    
-                </div>
-
-                <h3>Welcome, <span id="usernameDisplay"></span></h3>
-        <div class="create-recipe-box">
-                <input type="text" id="recipeTitle" placeholder="Recipe Title">
-                <textarea id="recipeContent" placeholder="Enter ingredients, one per line"></textarea>
-                <input type="file" id="recipeImage" accept="image/*">
-                <button onclick="addRecipe()">Post Recipe</button>
-        </div>
-        <div class="posts">Posts</div>
-        <div class="your-recipes">
-                <div id="yourRecipes"></div>
-                <div id="editModal">
-                    <div>
-                    <h3>Edit Recipe</h3>
-                    <input type="text" id="editTitle"><br>
-                    <textarea id="editContent"></textarea><br>
-                    <input type="file" id="editImage" accept="image/*"><br>
-                    <button onclick="saveEdit()">Save</button>
-                    <button onclick="closeModal()">Cancel</button>
-                    </div>
-                </div>
-        </div>        
-</div>
-</div>
-
-    <div class="credits">
-        <div class="names">
-            <div>
-                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
-            </div>
-            <div>
-                <h3>BSCPE 402</h3>
-            </div>
-        </div>
+  <div class="welcome-content">
+    <div class="top-bar">
+      <h1>Your Recipes</h1>
     </div>
+
+    <h3>Welcome, <span id="usernameDisplay"></span></h3>
+    <div class="create-recipe-box">
+      <input type="text" id="recipeTitle" placeholder="Recipe Title">
+      <textarea id="recipeContent" placeholder="Enter ingredients, one per line"></textarea>
+      <input type="file" id="recipeImage" accept="image/*">
+      <button onclick="addRecipe()">Post Recipe</button>
+    </div>
+    <div class="posts">Posts</div>
+    <div class="your-recipes">
+      <div id="yourRecipes"></div>
+      <div id="editModal">
+        <div>
+          <h3>Edit Recipe</h3>
+          <input type="text" id="editTitle"><br>
+          <textarea id="editContent"></textarea><br>
+          <input type="file" id="editImage" accept="image/*"><br>
+          <button onclick="saveEdit()">Save</button>
+          <button onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="credits">
+  <div class="names">
+    <div>
+      <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+    </div>
+    <div>
+      <h3>BSCPE 402</h3>
+    </div>
+  </div>
+</div>
+
 <script>
-    
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('navbar-links').classList.toggle('active');
+  });
 
- document.getElementById('menu-button').addEventListener('click', function () {
-            document.getElementById('navbar-links').classList.toggle('active');
-        });
+  document.addEventListener('click', function (event) {
+    const menuButton = document.getElementById('menu-button');
+    const navbarLinks = document.getElementById('navbar-links');
 
-        document.addEventListener('click', function (event) {
-            const menuButton = document.getElementById('menu-button');
-            const navbarLinks = document.getElementById('navbar-links');
-
-            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
-                navbarLinks.classList.remove('active');
-            }
-        });
-
+    if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+      navbarLinks.classList.remove('active');
+    }
+  });
 
   const user = localStorage.getItem('loggedInUser');
-  if (!user) window.location.href = 'login.html';
-  document.getElementById('usernameDisplay').textContent = user;
+
+  const loginItem = document.getElementById('loginItem');
+  const logoutItem = document.getElementById('logoutItem');
+
+  if (!user) {
+    loginItem.style.display = 'list-item';
+    logoutItem.style.display = 'none';
+    // Optionally redirect unauthorized users
+    if (window.location.pathname.includes('profile.html')) {
+      window.location.href = 'login.html';
+    }
+  } else {
+    document.getElementById('usernameDisplay').textContent = user;
+    loginItem.style.display = 'none';
+    logoutItem.style.display = 'list-item';
+  }
 
   function logout() {
     localStorage.removeItem('loggedInUser');
@@ -187,7 +198,9 @@
     }
   }
 
-  displayRecipes();
+  if (user) {
+    displayRecipes();
+  }
 </script>
 </body>
 </html>
