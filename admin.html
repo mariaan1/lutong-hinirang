@@ -2,148 +2,46 @@
 <html>
 <head>
   <title>Admin Panel</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-    #loginForm {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #f9f9f9;
-    }
-    #loginForm label {
-      display: block;
-      margin-top: 10px;
-    }
-    #loginForm input, #loginForm button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-    button {
-      cursor: pointer;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 4px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #navBar {
-      margin-bottom: 10px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    #navBar button {
-      padding: 10px 20px;
-      border-radius: 6px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    #navBar button:hover {
-      background-color: #1e7e34;
-    }
-    #adminControls {
-      text-align: center;
-      margin-top: 10px;
-    }
-    #adminControls button {
-      background-color: #dc3545;
-      padding: 10px 20px;
-    }
-    #adminControls button:hover {
-      background-color: #c82333;
-    }
-    #userPassList, #recipesList {
-      margin-top: 30px;
-      border-top: 1px solid #ccc;
-      padding-top: 20px;
-    }
-    .recipe {
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-    .recipe img {
-      max-width: 150px;
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .hidden {
-      display: none;
-    }
-    /* Modal styles */
-    #editModal {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      max-width: 400px;
-      width: 90%;
-      z-index: 1000;
-    }
-    #modalOverlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 900;
-    }
-    #editModal input[type="text"],
-    #editModal textarea,
-    #editModal input[type="file"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
-    #editModal button {
-      margin-top: 10px;
-      padding: 8px 15px;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-    }
-    #editModal button:nth-child(1) {
-      background-color: #007BFF;
-      color: white;
-    }
-    #editModal button:nth-child(2) {
-      background-color: #ccc;
-      color: black;
-      margin-left: 10px;
-    }
-  </style>
+  <link href="admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <h1>Admin Panel</h1>
 
-  <div id="loginForm">
+<header>
+        <div class="logo">
+            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
+        </div>            
+        <nav>
+            <div class="menu-button" id="menu-button">
+                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+            </div>
+            <ul id="navbar-links">
+                <li><a href="public.html">Dashboard</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="luzon.html">Luzon</a></li>
+                <li><a href="visayas.html">Visayas</a></li>
+                <li><a href="mindanao.html">Mindanao</a></li>
+                <li><a href="portfolio.html">Portfolio Content</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="welcome-section">
+    <div class="welcome-content">
+        <h1>Admin Panel</h1>
+
+        <div id="loginForm">
     <label for="adminUser">Username:</label>
     <input type="text" id="adminUser" autocomplete="off" autocapitalize="none" placeholder="Enter admin username" />
     <label for="adminPass">Password:</label>
     <input type="password" id="adminPass" placeholder="Enter admin password" />
     <button onclick="adminLogin()">Login</button>
   </div>
-
+<br><br>
   <div id="navBar" class="hidden">
     <button onclick="location.href='login.html'">Login</button>
     <button onclick="location.href='signup.html'">Sign Up</button>
@@ -160,7 +58,7 @@
   </div>
 
   <div id="recipesList" class="hidden">
-    <h2>All User Recipes</h2>
+    <h2>All User Recipes</h2> <br>
     <div id="recipesContainer"></div>
   </div>
 
@@ -182,8 +80,33 @@
     </div>
   </div>
   <div id="modalOverlay" class="hidden"></div>
-
+  </div>
+</div>
+<div class="credits">
+        <div class="names">
+            <div>
+                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+            </div>
+            <div>
+                <h3>BSCPE 402</h3>
+            </div>
+        </div>
+    </div>
 <script>
+
+ document.getElementById('menu-button').addEventListener('click', function () {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menuButton = document.getElementById('menu-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+
   const adminCreds = { username: 'admin', password: 'admin123' };
 
   function adminLogin() {
@@ -234,9 +157,9 @@
         div.className = 'recipe';
         const contentList = r.content.split('\n').map(line => `<li>${line}</li>`).join('');
         div.innerHTML = `
-          <em>By: ${user}</em><br>
-          <strong>${r.title}</strong>
-          <ul>${contentList}</ul>
+          <em>By: ${user}</em><br><br>
+          <strong>${r.title}</strong><br>
+          <ul>${contentList}</ul><br>
           ${r.image ? `<img src="${r.image}" alt="Recipe Image">` : ''}
           <button onclick="editRecipe('${user}', ${i})">Edit</button>
           <button onclick="deleteRecipe('${user}', ${i})">Delete</button>

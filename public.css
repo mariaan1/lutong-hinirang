@@ -202,6 +202,20 @@ nav a:hover {
         transform: scale(1.5);
 }
 
+.recipe {
+    text-align: center;
+}
+
+.recipe img { 
+        max-width: 140px; 
+        margin-top: 10px;
+        transition: transform 0.3s;
+    }
+
+.recipe img:hover {
+            transform: scale(1.5);
+}
+
 #authButtons {
     font-size: 30px;
     color: #ffffff;
