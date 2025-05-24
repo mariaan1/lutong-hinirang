@@ -18,30 +18,34 @@ header {
 }
 
 .logo:hover {
-    transform: scale(1.50);
+    transform: scale(1.5);
 }
-
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 10px;
     flex-wrap: wrap;
+
 }
 
 nav a {
+    border-right: 2px solid #ffffff4f;
     text-decoration: none;
-    padding: 9px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
     transition: color 0.3s;
+    padding-right: 15px;
+    margin-right: 10px;
 }
+
 
 nav a:hover {
     color: #843b0c;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px 5px #ffffff;
+    background-color: #ffba52;
+    box-shadow: 0 0 15px 5px #ffba52;
+    color: #ffffff;
 }
 
 .recipe-section {

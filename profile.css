@@ -129,21 +129,32 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-.create-recipe-box {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    height: 200px;
-    width: 500px;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
+    .create-recipe-box {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        height: 200px;
+        width: 500px;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 2px 2px #00000054;
+    }
 
-.your-recipes {
-    background-color: #ffffff;
-
-}
+    .your-recipes {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        height: 400px;
+        width: 500px;
+        text-align: left;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 2px 2px #00000054;
+    }
 
 .credits {
     display: flex;
@@ -240,11 +251,6 @@ nav a:hover {
 
     .welcome-content p {
         font-size: 15px;
-    }
-
-    .welcome-content h3 {
-        font-size: 25px;
-        font-style: italic;
     }
 
     .create-recipe-box {
