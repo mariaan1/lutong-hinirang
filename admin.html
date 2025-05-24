@@ -114,7 +114,6 @@
     const pass = document.getElementById('adminPass').value;
 
     if (user === adminCreds.username && pass === adminCreds.password) {
-      alert('Admin logged in!');
       document.getElementById('loginForm').classList.add('hidden');
       document.getElementById('navBar').classList.remove('hidden');
       document.getElementById('adminControls').classList.remove('hidden');
@@ -123,7 +122,7 @@
       displayUsers();
       displayRecipes();
     } else {
-      alert('Invalid admin credentials');
+      alert('Wrong Username or Password');
     }
   }
 
