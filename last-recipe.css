@@ -101,6 +101,7 @@ nav a:hover {
     font-style: italic;
     color: #ffffff;
     margin-bottom: 40px;
+    text-justify: inter-word;
 }
 
 .ingredients-procedure {
@@ -195,4 +196,95 @@ font-weight: 900;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.credits {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #843b0c;
+}
+
+.names {
+    padding: 30px;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.menu-button {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-button img {
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+        transition: transform 0.3s;
+    }
+
+    .menu-button:hover {
+        transform: scale(1.5);
+}
+
+    #navbar-links {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #9e4d1f;
+        width: 100%;
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 100;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #navbar-links.active {
+        display: flex;
+    }
+
+    #navbar-links a {
+        margin: 10px 20px;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav a {
+    border-right: 2px solid #9e4d1f;
+    gap: 9px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: color 0.3s;
+    }
+
+    .adobo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .recipe-description {
+        font-size: 18px;
+        margin: 14px;
+    }
+
+    .ingredients-procedure {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ingredients, .procedure {
+        width: 300px;
+    }
+
+    .nutrition-table {
+        margin: 25px;
+    }
+
 }
