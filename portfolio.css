@@ -1,0 +1,161 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('litratos/background-pattern.png') repeat;
+    background-size: contain;
+}
+
+header {
+    background-color: #843b0c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.50);
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 9px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #843b0c;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 5px #ffffff;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.portfolio-section {
+    background: rgba(51, 51, 51, 0.8);
+    text-align: center;
+    padding: 100px 20px;
+    margin: 0px auto;
+    width: 80%;
+}
+
+.portfolio-intro {
+    margin-left: 80px;
+    margin-right: 80px;
+    color: #ffffff;
+    font-family: 'Times New Roman';
+    margin-bottom: 20px;
+}
+
+.div-label {
+    display: flex;
+    justify-content: center;
+} 
+
+.page-label {
+    display: flex;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+    font-family: 'Elephant';
+    font-size: 50px;
+    color: #ffffff;
+    border-right: 4px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation:
+        typing 2s steps(13) infinite alternate,
+        blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 13ch; }
+}
+
+
+.portfolio-content p {
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Times New Roman';
+    margin-bottom: 40px;
+}
+
+.islands-portfolio {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.a-order {
+    margin-top: 50px;
+    font-family: 'Elephant';
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 50px;
+    background-color: rgba(0, 0, 0, 0.568);
+    flex-wrap: wrap;
+}
+
+.recipe-name-island {
+    width: 100px;
+ color: #ffffff;
+ font-family: 'Times New Roman', Times, serif;
+}
+
+.recipe-image {
+    margin: 10px;
+    width: 100px;
+}
+
+
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes scroll {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+to{
+    opacity: 1;
+    scale:1;
+    }
+}

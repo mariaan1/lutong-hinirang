@@ -1,0 +1,152 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('litratos/background-pattern.png') repeat;
+    background-size: contain;
+}
+
+header {
+    background-color: #843b0c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.50);
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 9px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #843b0c;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 5px #ffffff;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.gallery-section {
+    background: rgba(51, 51, 51, 0.8);
+    text-align: center;
+    padding: 100px 20px;
+    margin: 0px auto;
+    width: 80%;
+}
+
+.gallery-intro {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Times New Roman';
+    margin-bottom: 20px;
+}
+
+
+.page-label {
+    display: flex;
+    text-align: center;
+    font-family: 'Elephant';
+    font-size: 30px;
+    color: #ffffff;
+    border-right: 4px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+    animation:
+        typing 2s steps(9) infinite alternate,
+        blinkCursor 0.7s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 9ch; }
+}
+
+
+.gallery-content p {
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Times New Roman';
+    margin-bottom: 40px;
+}
+
+.islands {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.recipes {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.island-name {
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+.recipe-image {
+    height: 270px;
+    transition: transform 0.3s;
+}
+
+.recipe-image:hover {
+    transform: scale(1.5);
+}
+
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes scroll {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+to{
+    opacity: 1;
+    scale:1;
+    }
+}
