@@ -12,7 +12,10 @@
             <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
         </div>            
         <nav>
-            <ul>
+            <div class="menu-button" id="menu-button">
+                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+            </div>
+            <ul id="navbar-links">
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="luzon.html">Luzon</a></li>
                 <li><a href="visayas.html">Visayas</a></li>
@@ -32,13 +35,31 @@
         </div>
         <a href="menu.html"><img src="litratos/begin-button.png" alt="Begin" class="begin-button"></a>
     </section>
+
     <div class="credits">
         <div class="names">
-        <div><p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+            <div>
+                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+            </div>
+            <div>
+                <h3>BSCPE 402</h3>
+            </div>
         </div>
-        <div>
-        <h3>BSCPE 402</h3>
-        </div></div>
     </div>
+
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function () {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menuButton = document.getElementById('menu-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
