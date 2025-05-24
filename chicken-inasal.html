@@ -12,7 +12,11 @@
             <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
         </div>            
         <nav>
-            <ul>
+            <div class="menu-button" id="menu-button">
+                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+            </div>
+            <ul id="navbar-links">
+                <li><a href="public.html">Dashboard</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="luzon.html">Luzon</a></li>
                 <li><a href="visayas.html">Visayas</a></li>
@@ -20,9 +24,12 @@
                 <li><a href="portfolio.html">Portfolio Content</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="admin.html">Admin</a></li>
             </ul>
         </nav>
-    </header>        
+    </header>       
 
 <section>
     <div class="recipe-section">
@@ -117,8 +124,33 @@
         <a href="humba.html"><img src="litratos/next-recipe.png" class="back-to-recipe"></a>
     </div>>  
 </div>
-
 </section>
+
+<div class="credits">
+        <div class="names">
+            <div>
+                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
+            </div>
+            <div>
+                <h3>BSCPE 402</h3>
+            </div>
+        </div>
+    </div>
+
+<script>
+        document.getElementById('menu-button').addEventListener('click', function () {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            const menuButton = document.getElementById('menu-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
