@@ -18,31 +18,34 @@ header {
 }
 
 .logo:hover {
-    transform: scale(1.50);
+    transform: scale(1.5);
 }
-
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 10px;
     flex-wrap: wrap;
+
 }
 
 nav a {
+    border-right: 2px solid #ffffff4f;
     text-decoration: none;
-    padding: 9px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
     transition: color 0.3s;
+    padding-right: 15px;
+    margin-right: 10px;
 }
 
+
 nav a:hover {
+    color: #843b0c;
+    background-color: #ffba52;
+    box-shadow: 0 0 15px 5px #ffba52;
     color: #ffffff;
-    background-color: #ffbb00;
-    box-shadow: 0 0 15px 5px #ffd000;
-    transform: scale(1.50);
 }
 
 .wrapper {
@@ -79,6 +82,8 @@ img {
     flex-direction: column;
     opacity: 0;
     transition: 0.6s;
+    padding-top: 87px;
+    padding-bottom: 75px;
 }
 
 .content:hover {
@@ -86,9 +91,10 @@ img {
 }
 
 .content h1 {
-    font-size: 55px;
+    font-size: 30px;
     color:#ffffff;
-    margin: 15px;
+    margin: 0px;
+
 }
 
 .content p {
@@ -165,7 +171,7 @@ img {
 
 
 .luzon-content p {
-    font-size: 20px;
+    font-size: 15px;
     color: #ffffff;
     font-family: 'Times New Roman';
     margin-bottom: 40px;
@@ -183,6 +189,8 @@ img {
     width: 150px;
 
 }
+
+
 
 *{
 
@@ -206,4 +214,118 @@ to{
     animation: scroll linear;
     animation-timeline: view();
     animation-range: entry 0 cover 50%;
+}
+
+.menu-button {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-button img {
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 1115px) {
+    .menu-button {
+        display: block;
+        transition: transform 0.3s;
+    }
+
+    .menu-button:hover {
+        transform: scale(1.5);
+}
+
+    #navbar-links {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #9e4d1f;
+        width: 100%;
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 100;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #navbar-links.active {
+        display: flex;
+    }
+
+    #navbar-links a {
+        margin: 10px 20px;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav a {
+    border-right: 2px solid #9e4d1f;
+    gap: 9px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: color 0.3s;
+    }
+    
+    .welcome-section {
+        padding-top: 30px;
+
+    }
+
+    .luzon-section {
+        padding: px;
+        width: 95%;
+        align-items: center;
+    }
+
+    .luzon-image {
+        margin-top: 70px;
+        width: 200px;
+    }
+
+    .luzon-intro {
+        margin: 20px;
+    }
+
+    .luzon-content p {
+        font-size: 18px;
+        margin: 14px;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    .popular-recipes {
+        font-size: 20px;
+        margin-top: 100px;
+        margin-inline: 5px;
+    }
+
+    .wrapper {
+        position: relative;
+
+    }
+
+    .content {
+        position: absolute;
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%);
+    }
+
+    .content h1 {
+        font-size: 25px;
+        margin: 0;
+    }
+
+    .content p {
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .food-image {
+        align-self: center;
+        width: 330px;
+    }
+
 }
