@@ -18,7 +18,6 @@ header {
     padding: 10px 50px;
 }
 
-
 .logo img {
     height: 50px;
     transition: transform 0.3s;
@@ -55,13 +54,15 @@ nav a:hover {
     color: #ffffff;
 }
 
+
 .welcome-section {
     background: rgba(51, 51, 51, 0.8);
     text-align: center;
     padding: 100px 20px;
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
 }
+
 
 .welcome-content {
     display: flex;
@@ -82,17 +83,8 @@ nav a:hover {
     border-right: 4px solid #ffffff;
     white-space: nowrap;
     animation:
-        typing 1.5s steps(10) infinite alternate,
+        typing 2s steps(12) infinite alternate,
         blinkCursor 0.7s step-end infinite;
-}
-
-.top-bar {
-    color: #ffffff;
-    margin-bottom: 40px;
-}
-
-.top-bar p {
-    font-style: italic;
 }
 
 @keyframes blinkCursor {
@@ -101,7 +93,7 @@ nav a:hover {
 
 @keyframes typing {
     from { width: 0; }
-    to { width: 10ch; }
+    to { width: 24ch; }
 }
 
     .recipe { 
@@ -160,8 +152,8 @@ nav a:hover {
 
 .timeline {
     background-color: #ffffff;
-    width: 50%;
     margin: 10px;
+    width: 500px;
     padding: 60px;
 }
 
@@ -171,7 +163,10 @@ nav a:hover {
     flex-direction: column;
     text-align: center;
     background-color: #843b0c;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
+
 
 .names {
     padding: 30px;
@@ -189,10 +184,13 @@ nav a:hover {
     height: 30px;
 }
 
-
-
-/* Mobile */
 @media (max-width: 1115px) {
+
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
     .menu-button {
         display: block;
         transition: transform 0.3s;
@@ -200,6 +198,57 @@ nav a:hover {
 
     .menu-button:hover {
         transform: scale(1.5);
+}
+
+    .welcome-section {
+        width: 90%;
+    }
+
+    .welcome-content h1 {
+        font-size: 17px;
+    }
+
+    .welcome-content p {
+        font-size: 13px;
+    }
+
+    .timeline {
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 60px;
+}
+
+    #navbar-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #9e4d1f;
+        width: 100%;
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 100;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #navbar-links.active {
+        display: flex;
+    }
+
+    #navbar-links a {
+        margin: 10px 20px;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav a {
+    border-right: 2px solid #9e4d1f;
+    gap: 9px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: color 0.3s;
 }
 
 .recipe {
@@ -234,37 +283,4 @@ nav a:hover {
     border-radius: 20px;
             box-shadow: 5px 5px 2px 2px #00000054;
 }
-
-    #navbar-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background-color: #9e4d1f;
-        width: 100%;
-        flex-direction: column;
-        padding: 10px 0;
-        z-index: 100;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    #navbar-links.active {
-        display: flex;
-    }
-
-    #navbar-links a {
-        margin: 10px 20px;
-        padding: 5px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    nav a {
-        border-right: 2px solid #9e4d1f;
-        gap: 9px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 15px;
-        transition: color 0.3s;
-    }
 }
