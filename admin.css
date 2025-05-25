@@ -15,9 +15,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 50px;
+    padding: 10px;
 }
 
+nav {
+    display: flex;
+    gap: 30px;
+}
 
 .logo img {
     height: 50px;
@@ -31,7 +35,7 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 7px;
     flex-wrap: wrap;
 
 }
