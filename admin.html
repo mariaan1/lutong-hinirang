@@ -3,110 +3,128 @@
 <head>
   <title>Admin Panel</title>
   <link href="admin.css" rel="stylesheet" type="text/css">
+  <script>
+    // ✅ Prevent non-admin users from accessing this page
+    const currentUser = localStorage.getItem('loggedInUser');
+    if (currentUser && currentUser !== 'admin') {
+      alert("Access denied. Admins only.");
+      window.location.href = "home.html"; // Redirect to another page
+    }
+  </script>
 </head>
 <body>
 
 <header>
-        <div class="logo">
-            <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
-        </div>            
-        <nav>
-            <div class="menu-button" id="menu-button">
-                <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
-            </div>
-            <ul id="navbar-links">
-              <li><a href="profile.html">Profile</a></li>
-                <li><a href="public.html">Dashboard</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="luzon.html">Luzon</a></li>
-                <li><a href="visayas.html">Visayas</a></li>
-                <li><a href="mindanao.html">Mindanao</a></li>
-                <li><a href="portfolio.html">Portfolio Content</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li id="loginItem"><a href="login.html">Login</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="logo">
+    <a href="home.html"><img src="litratos/1-logo.png" alt="Lutong Hinirang Logo"></a>
+  </div>            
+  <nav>
+    <div class="menu-button" id="menu-button">
+      <img src="/lutong-hinirang/litratos/hamburger-symbol.png" alt="Menu" />
+    </div>
+    <ul id="navbar-links">
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="public.html">Dashboard</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="luzon.html">Luzon</a></li>
+      <li><a href="visayas.html">Visayas</a></li>
+      <li><a href="mindanao.html">Mindanao</a></li>
+      <li><a href="portfolio.html">Portfolio Content</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="nutrition_chart.html">Nutrition Chart</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li id="loginItem"><a href="login.html">Login</a></li>
+      <li><a href="admin.html" id="adminLink">Admin</a></li>
+    </ul>
+  </nav>
+</header>
 
 <div class="welcome-section">
-    <div class="welcome-content">
-        <h1>Admin Panel</h1>
+  <div class="welcome-content">
+    <h1>Admin Panel</h1>
 
-        <div id="loginForm">
-    <label for="adminUser">Username:</label>
-    <input type="text" id="adminUser" autocomplete="off" autocapitalize="none" placeholder="Enter admin username" />
-    <label for="adminPass">Password:</label>
-    <input type="password" id="adminPass" placeholder="Enter admin password" />
-    <button onclick="adminLogin()">Login</button>
-  </div>
-<br><br>
-  <div id="navBar" class="hidden">
-    <button onclick="location.href='login.html'">Login</button>
-    <button onclick="location.href='signup.html'">Sign Up</button>
-    <button onclick="location.href='public.html'">Public Recipes</button>
-  </div>
-
-  <div id="adminControls" class="hidden">
-    <button onclick="logoutAdmin()">Logout Admin</button>
-  </div>
-
-  <div id="userPassList" class="hidden">
-    <h2>Registered Users</h2>
-    <pre id="usersDisplay"></pre>
-  </div>
-
-  <div id="recipesList" class="hidden">
-    <h2>All User Recipes</h2> <br>
-    <div id="recipesContainer"></div>
-  </div>
-
-  <!-- Edit Modal -->
-  <div id="editModal" class="hidden">
-    <h3>Edit Recipe</h3>
-    <label>Title:</label>
-    <input type="text" id="editTitle" />
-    
-    <label>Ingredients / Content (use new lines for list items):</label>
-    <textarea id="editContent" rows="6"></textarea>
-    
-    <label>Upload Image:</label>
-    <input type="file" id="editImage" accept="image/*" />
-    
-    <div style="margin-top: 15px; text-align: right;">
-      <button onclick="saveEdit()">Save</button>
-      <button onclick="closeEditModal()" style="background-color: #ccc; color: black; margin-left: 10px;">Cancel</button>
+    <div id="loginForm">
+      <label for="adminUser">Username:</label>
+      <input type="text" id="adminUser" placeholder="Enter admin username" />
+      <label for="adminPass">Password:</label>
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+      <button onclick="adminLogin()">Login</button>
     </div>
-  </div>
-  <div id="modalOverlay" class="hidden"></div>
+
+    <br><br>
+    <div id="navBar" class="hidden">
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='signup.html'">Sign Up</button>
+      <button onclick="location.href='public.html'">Public Recipes</button>
+    </div>
+
+    <div id="adminControls" class="hidden">
+      <button onclick="logoutAdmin()">Logout Admin</button>
+    </div>
+
+    <div id="userPassList" class="hidden">
+      <h2>Registered Users</h2>
+      <pre id="usersDisplay"></pre>
+    </div>
+
+    <div id="recipesList" class="hidden">
+      <h2>All User Recipes</h2> <br>
+      <div id="recipesContainer"></div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="hidden">
+      <h3>Edit Recipe</h3>
+      <label>Title:</label>
+      <input type="text" id="editTitle" />
+      
+      <label>Ingredients / Content (use new lines for list items):</label>
+      <textarea id="editContent" rows="6"></textarea>
+      
+      <label>Upload Image:</label>
+      <input type="file" id="editImage" accept="image/*" />
+      
+      <div style="margin-top: 15px; text-align: right;">
+        <button onclick="saveEdit()">Save</button>
+        <button onclick="closeEditModal()" style="background-color: #ccc; color: black; margin-left: 10px;">Cancel</button>
+      </div>
+    </div>
+
+    <div id="modalOverlay" class="hidden"></div>
   </div>
 </div>
+
 <div class="credits">
-        <div class="names">
-            <div>
-                <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
-            </div>
-            <div>
-                <h3>BSCPE 402</h3>
-            </div>
-        </div>
+  <div class="names">
+    <div>
+      <p>Maria Anifur Bautista // Clyde Galban<br> Patrick Laureen Guinto // Benedict Ledesma</p>
     </div>
+    <div>
+      <h3>BSCPE 402</h3>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Hide admin link in navbar if not admin
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  if (loggedInUser && loggedInUser !== 'admin') {
+    const adminLink = document.getElementById('adminLink');
+    if (adminLink) adminLink.style.display = "none";
+  }
 
- document.getElementById('menu-button').addEventListener('click', function () {
-            document.getElementById('navbar-links').classList.toggle('active');
-        });
+  // Toggle navbar
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('navbar-links').classList.toggle('active');
+  });
 
-        document.addEventListener('click', function (event) {
-            const menuButton = document.getElementById('menu-button');
-            const navbarLinks = document.getElementById('navbar-links');
-
-            if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
-                navbarLinks.classList.remove('active');
-            }
-        });
+  document.addEventListener('click', function (event) {
+    const menuButton = document.getElementById('menu-button');
+    const navbarLinks = document.getElementById('navbar-links');
+    if (!menuButton.contains(event.target) && !navbarLinks.contains(event.target)) {
+      navbarLinks.classList.remove('active');
+    }
+  });
 
   const adminCreds = { username: 'admin', password: 'admin123' };
 
@@ -174,14 +192,11 @@
   function editRecipe(u, i) {
     editUser = u;
     editIndex = i;
-    
     const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
     const r = recipes[u][i];
-    
     document.getElementById('editTitle').value = r.title;
     document.getElementById('editContent').value = r.content;
-    document.getElementById('editImage').value = ''; // reset file input
-    
+    document.getElementById('editImage').value = '';
     document.getElementById('editModal').classList.remove('hidden');
     document.getElementById('modalOverlay').classList.remove('hidden');
   }
@@ -197,7 +212,7 @@
     const imageInput = document.getElementById('editImage');
     const recipes = JSON.parse(localStorage.getItem('recipes') || '{}');
     let recipe = recipes[editUser][editIndex];
-    
+
     if (!newTitle) {
       alert('Title cannot be empty');
       return;
@@ -210,8 +225,7 @@
       const file = imageInput.files[0];
       const reader = new FileReader();
       reader.onload = function(e) {
-        recipe.image = e.target.result; // base64 image string
-        
+        recipe.image = e.target.result;
         recipes[editUser][editIndex] = recipe;
         localStorage.setItem('recipes', JSON.stringify(recipes));
         displayRecipes();
@@ -219,7 +233,6 @@
       };
       reader.readAsDataURL(file);
     } else {
-      // No new image, keep existing
       recipes[editUser][editIndex] = recipe;
       localStorage.setItem('recipes', JSON.stringify(recipes));
       displayRecipes();
@@ -237,5 +250,6 @@
     }
   }
 </script>
+
 </body>
 </html>
