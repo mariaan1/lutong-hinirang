@@ -153,7 +153,12 @@ nav a:hover {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 1115px) {
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
     .menu-button {
         display: block;
         transition: transform 0.3s;
@@ -168,11 +173,11 @@ nav a:hover {
     }
 
     .welcome-content h1 {
-        font-size: 25px;
+        font-size: 17px;
     }
 
     .welcome-content p {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     #navbar-links {

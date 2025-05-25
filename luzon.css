@@ -241,6 +241,12 @@ to{
 }
 
 @media (max-width: 1115px) {
+
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
     .menu-button {
         display: block;
         transition: transform 0.3s;
@@ -312,7 +318,6 @@ to{
     .popular-recipes {
         font-size: 20px;
         margin-top: 100px;
-        margin-inline: 5px;
     }
 
     .wrapper {
@@ -339,7 +344,7 @@ to{
 
     .food-image {
         align-self: center;
-        width: 270px;
+        width: 200px;
     }
 
 }
