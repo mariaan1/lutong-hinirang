@@ -154,6 +154,11 @@ nav a:hover {
 
 /* Mobile */
 @media (max-width: 1115px) {
+    .home-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
     .logo img {
         width: 150px;
         height: auto;
