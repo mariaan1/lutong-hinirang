@@ -239,7 +239,12 @@ to{
     height: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1115px) {
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
     .menu-button {
         display: block;
         transition: transform 0.3s;
@@ -247,7 +252,7 @@ to{
 
     .menu-button:hover {
         transform: scale(1.5);
-}
+    }
 
     #navbar-links {
         display: none;
