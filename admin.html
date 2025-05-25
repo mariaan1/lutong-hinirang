@@ -4,11 +4,10 @@
   <title>Admin Panel</title>
   <link href="admin.css" rel="stylesheet" type="text/css">
   <script>
-    // ✅ Prevent non-admin users from accessing this page
     const currentUser = localStorage.getItem('loggedInUser');
     if (currentUser && currentUser !== 'admin') {
-      alert("Access denied. Admins only.");
-      window.location.href = "home.html"; // Redirect to another page
+      alert("Log out user account before accessing admin.");
+      window.location.href = "home.html";
     }
   </script>
 </head>
@@ -72,7 +71,6 @@
       <div id="recipesContainer"></div>
     </div>
 
-    <!-- Edit Modal -->
     <div id="editModal" class="hidden">
       <h3>Edit Recipe</h3>
       <label>Title:</label>
@@ -106,14 +104,12 @@
 </div>
 
 <script>
-  // Hide admin link in navbar if not admin
   const loggedInUser = localStorage.getItem('loggedInUser');
   if (loggedInUser && loggedInUser !== 'admin') {
     const adminLink = document.getElementById('adminLink');
     if (adminLink) adminLink.style.display = "none";
   }
 
-  // Toggle navbar
   document.getElementById('menu-button').addEventListener('click', function () {
     document.getElementById('navbar-links').classList.toggle('active');
   });
